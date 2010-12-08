@@ -8,12 +8,13 @@ Create a folder for your app, add a Gemfile:
   
   source :rubygems
   gem 'punchcard'
+  # Fork of sinatra-mongoid that plays nice with mongohq on heroku
+  gem 'sinatra-mongoid', :require => 'sinatra/mongoid', :git => 'https://github.com/robertoles/sinatra-mongoid.git'
 
 Run bundle install. You'll also need a config.ru that looks like this:
 
   require 'bundler'
   Bundler.require
-  Punchcard.set :mongo_db, 'punchcard'
   run Punchcard
   
 Now running rackup should launch punchcard.

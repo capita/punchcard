@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    punchcard (0.0.0)
+    punchcard (0.1.0)
       bson_ext
       gravtastic
       haml (>= 3.0.24)

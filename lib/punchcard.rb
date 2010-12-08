@@ -1,5 +1,10 @@
 require 'bundler'
-Bundler.require(:default)
+Bundler.setup(:default)
+
+require 'sinatra'
+require 'sinatra/mongoid'
+require 'gravtastic'
+require 'mongoid'
 
 require 'punchcard/person'
 require 'punchcard/punch'

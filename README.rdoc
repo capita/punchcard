@@ -24,9 +24,9 @@ Same as above, but you can ditch the mongo_db setup line. Initialize a git repo 
 
   $ git init
   $ git commit -a -m "Initial commit"
-  $ heroku create --stack bamboo-mri-1.9.2
+  $ heroku create [APPNAME] --stack bamboo-mri-1.9.2
   $ heroku addons:add mongohq:free
-  $ git push heroku
+  $ git push heroku master
   
 Now head over to your app's url! Please also check out the next two sections for auth and adding people.
   

@@ -11,8 +11,10 @@ begin
     gem.homepage = "http://github.com/colszowka/punchcard"
     gem.authors = ["Christoph Olszowka"]
     gem.add_dependency 'sinatra', ">= 1.0.0"
+    gem.add_dependency 'haml', '>= 3.0.24'
+    gem.add_dependency 'sass', '>= 3.0.0'
     gem.add_development_dependency "shoulda", "2.10.3"
-    gem.add_development_dependency "rack-test", ">= 0"
+    gem.add_development_dependency "rack-test", ">= 0.5.6"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

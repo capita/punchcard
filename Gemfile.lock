@@ -2,14 +2,18 @@ PATH
   remote: .
   specs:
     punchcard (0.0.0)
+      haml (>= 3.0.24)
+      sass (>= 3.0.0)
       sinatra (>= 1.0.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
+    haml (3.0.24)
     rack (1.2.1)
     rack-test (0.5.6)
       rack (>= 1.0)
+    sass (3.1.0.alpha.200)
     shoulda (2.10.3)
     sinatra (1.1.0)
       rack (~> 1.1)
@@ -20,7 +24,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  haml (>= 3.0.24)
   punchcard!
-  rack-test
+  rack-test (>= 0.5.6)
+  sass (>= 3.0.0)
   shoulda (= 2.10.3)
   sinatra (>= 1.0.0)

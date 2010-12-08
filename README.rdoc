@@ -1,6 +1,40 @@
-= punchcard
+= Punchcard
 
-Description goes here.
+A simple Sinatra app that lets you track who is and has been in the office at what times.
+
+== Setup (theory)
+
+Create a folder for your app, add a Gemfile:
+  
+  source :rubygems
+  gem 'punchcard'
+
+Run bundle install. You'll also need a config.ru that looks like this:
+
+  require 'bundler'
+  Bundler.require
+  Punchcard.set :mongo_db, 'punchcard'
+  run Punchcard
+  
+Now running rackup should launch punchcard.
+  
+== Setup (for real on Heroku)
+
+Same as above, but you can ditch the mongo_db setup line. Initialize a git repo in your folder
+
+  $ git init
+  $ git commit -a -m "Initial commit"
+  $ heroku create --stack bamboo-mri-1.9.2
+  $ heroku addons:add mongohq:free
+  $ git push heroku
+  
+== Adding people
+
+Currently, you'll have to add users directly from the console. After creating your app on heroku,
+you can do so by running
+
+  $ heroku console
+  > Person.create!(:name => 'Forrest Gump', :email => 'forrest@shrimpco.org')
 
 == Note on Patches/Pull Requests
  

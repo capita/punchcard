@@ -1,6 +1,9 @@
 require 'bundler'
 Bundler.setup(:default)
 
+# Set up env vars for mongohq first if present...
+require 'punchcard/mongohq'
+
 require 'sinatra'
 require 'sinatra/mongoid'
 require 'gravtastic'
@@ -8,7 +11,6 @@ require 'mongoid'
 
 require 'punchcard/person'
 require 'punchcard/punch'
-require 'punchcard/mongohq'
 
 class Punchcard < Sinatra::Base
   set :views,  File.join(File.dirname(__FILE__), 'views')

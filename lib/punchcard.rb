@@ -99,7 +99,12 @@ class Punch
   # Punches this punch out when pending
   def punch_out!
     return false if checked_out_at.present?
-    self.checked_out_at = Time.now
+    # Make sure no one stays the night...
+    if self.checked_in_at.to_date < Date.today
+      self.checked_out_at = self.checked_in_at.end_of_day
+    else
+      self.checked_out_at = Time.now
+    end
     save!
     self
   end

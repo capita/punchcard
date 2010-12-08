@@ -1,5 +1,4 @@
 require './lib/punchcard'
 
-#Serious.set :public, ::File.join(Dir.getwd, 'public')
-##Serious.set :show_exceptions, true
+Punchcard.set :mongo_db, 'punchcard'
 run Punchcard

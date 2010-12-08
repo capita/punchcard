@@ -1,1 +1,5 @@
-Hello from index!
+%ul#people
+  - @people.each do |person|
+    %li{:id => person.id}
+      %img.gravatar{:src => person.gravatar_url(:size => 80), :class => person.pending? ? 'pending' : ''}
+      .person= person.name

@@ -1,2 +1,45 @@
 body
-  font-family: "Lucida Grande", Helvetica, Arials, sans-serif
+  font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif
+  background: #efefef
+  
+$green: #090
+$yellow: #fc0
+
+#main
+  width: 800px
+  margin-top: 30px
+  padding: 30px 20px
+  margin-left: auto
+  margin-right: auto
+  background: #eadab6 url('/cardbg.png') repeat-x
+  -moz-box-shadow: 3px 3px 4px #d2bd8e
+
+.clear
+  clear: both
+  
+#people
+  list-style: none
+  margin: 0
+  padding: 0
+  
+  li
+    clear: both
+    margin-bottom: 20px
+    font-weight: bold
+    font-size: 50px
+    
+    &:last-child
+      margin-bottom: 0      
+      .gravatar
+        margin-bottom: 0
+    
+    .gravatar
+      float: left
+      margin-bottom: 20px
+      margin-right: 25px
+      border: 3px solid $yellow
+      -moz-box-shadow: 0px 0px 10px $yellow
+      &.pending
+        border-color: $green
+        -moz-box-shadow: 0px 0px 10px $green
+      

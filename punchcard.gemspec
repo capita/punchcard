@@ -19,7 +19,6 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
-     ".sass-cache/1b4c9de8b4610bc2e6da329f3a3f83994df9cdea/screen.sassc",
      "Gemfile",
      "Gemfile.lock",
      "LICENSE",
@@ -27,14 +26,19 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "config.ru",
+     "lib/public/cardbg.png",
      "lib/public/css/blueprint.css",
      "lib/public/js/app.js",
      "lib/punchcard.rb",
+     "lib/punchcard/mongohq.rb",
+     "lib/punchcard/person.rb",
+     "lib/punchcard/punch.rb",
      "lib/views/index.haml",
      "lib/views/layout.haml",
      "lib/views/screen.sass",
      "punchcard.gemspec",
      "test/helper.rb",
+     "test/test_database.rb",
      "test/test_punchcard.rb"
   ]
   s.homepage = %q{http://github.com/colszowka/punchcard}

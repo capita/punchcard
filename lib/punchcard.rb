@@ -1,9 +1,6 @@
 require 'bundler'
 Bundler.setup(:default)
 
-# Set up env vars for mongohq first if present...
-require 'punchcard/mongohq'
-
 require 'sinatra'
 require 'sinatra/mongoid'
 require 'gravtastic'

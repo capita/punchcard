@@ -58,7 +58,6 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<sinatra>, [">= 1.0.0"])
-      s.add_runtime_dependency(%q<sinatra-mongoid>, [">= 0"])
       s.add_runtime_dependency(%q<bson_ext>, [">= 0"])
       s.add_runtime_dependency(%q<haml>, [">= 3.0.24"])
       s.add_runtime_dependency(%q<sass>, [">= 3.0.0"])
@@ -68,7 +67,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rack-test>, [">= 0.5.6"])
     else
       s.add_dependency(%q<sinatra>, [">= 1.0.0"])
-      s.add_dependency(%q<sinatra-mongoid>, [">= 0"])
       s.add_dependency(%q<bson_ext>, [">= 0"])
       s.add_dependency(%q<haml>, [">= 3.0.24"])
       s.add_dependency(%q<sass>, [">= 3.0.0"])
@@ -79,7 +77,6 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<sinatra>, [">= 1.0.0"])
-    s.add_dependency(%q<sinatra-mongoid>, [">= 0"])
     s.add_dependency(%q<bson_ext>, [">= 0"])
     s.add_dependency(%q<haml>, [">= 3.0.24"])
     s.add_dependency(%q<sass>, [">= 3.0.0"])

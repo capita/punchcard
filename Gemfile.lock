@@ -1,14 +1,22 @@
+GIT
+  remote: https://github.com/robertoles/sinatra-mongoid.git
+  revision: f0d04640b84306a5d1e08569c9d12e9841e908b1
+  specs:
+    sinatra-mongoid (0.0.2)
+      mongo_ext
+      mongoid
+      sinatra
+
 PATH
   remote: .
   specs:
-    punchcard (0.1.0)
+    punchcard (0.1.2)
       bson_ext
       gravtastic
       haml (>= 3.0.24)
       mongoid
       sass (>= 3.0.0)
       sinatra (>= 1.0.0)
-      sinatra-mongoid
 
 GEM
   remote: http://rubygems.org/
@@ -36,10 +44,6 @@ GEM
     sinatra (1.1.0)
       rack (~> 1.1)
       tilt (~> 1.1)
-    sinatra-mongoid (0.0.2)
-      mongo_ext
-      mongoid
-      sinatra
     tilt (1.1)
     will_paginate (2.3.15)
 
@@ -56,4 +60,4 @@ DEPENDENCIES
   sass (>= 3.0.0)
   shoulda (= 2.10.3)
   sinatra (>= 1.0.0)
-  sinatra-mongoid
+  sinatra-mongoid!

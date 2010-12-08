@@ -11,7 +11,6 @@ begin
     gem.homepage = "http://github.com/colszowka/punchcard"
     gem.authors = ["Christoph Olszowka"]
     gem.add_dependency 'sinatra', ">= 1.0.0"
-    gem.add_dependency 'sinatra-mongoid', '>= 0'
     gem.add_dependency 'bson_ext', '>= 0'
     gem.add_dependency 'haml', '>= 3.0.24'
     gem.add_dependency 'sass', '>= 3.0.0'

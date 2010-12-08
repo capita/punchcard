@@ -28,6 +28,17 @@ Same as above, but you can ditch the mongo_db setup line. Initialize a git repo 
   $ heroku addons:add mongohq:free
   $ git push heroku
   
+Now head over to your app's url! Please also check out the next two sections for auth and adding people.
+  
+== Authentication
+
+You'll surely want to secure your punch card from general web access. The simplest way to do so is by
+using the rack auth middleware by defining it somewhere in your config.ru:
+
+  Punchcard.use Rack::Auth::Basic do |username, password|
+    [username, password] == ['admin', 'admin']
+  end
+  
 == Adding people
 
 Currently, you'll have to add users directly from the console. After creating your app on heroku,

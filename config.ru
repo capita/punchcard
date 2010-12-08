@@ -3,4 +3,9 @@
 require './lib/punchcard'
 
 Punchcard.set :mongo_db, 'punchcard'
+
+Punchcard.use Rack::Auth::Basic do |username, password|
+  [username, password] == ['admin', 'admin']
+end
+
 run Punchcard

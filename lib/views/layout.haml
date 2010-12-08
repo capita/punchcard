@@ -3,10 +3,19 @@
   %head
     %title Punchcard
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"}
+    %script{:src => 'http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js'}
     %script{:src => "/js/app.js"}
     :plain
       <link rel="stylesheet" href="/css/blueprint.css" type="text/css" media="screen" />
       <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen" />
+      
+    :plain
+      <script id="personTemplate" type="text/x-jquery-tmpl">
+        <li id="${_id}">
+          <img src="${gravatar_url}" title="${name}" class="gravatar {{if pending == true}}pending{{/if}} ${pending}"/>
+          <div class="person">${name}</div>
+        </li>
+      </script>
       
   %body
     #header

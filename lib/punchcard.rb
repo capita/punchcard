@@ -6,8 +6,11 @@ class Punchcard < Sinatra::Base
   set :public, File.join(File.dirname(__FILE__), 'public')
   
   get '/' do
-    @people = Person.order_by(:name)
     haml :index
+  end
+  
+  get '/status.json' do
+    Person.order_by(:name).all.to_json
   end
   
   post '/punch/:id' do
@@ -50,8 +53,19 @@ class Person
     end
   end
   
-  def to_json
-    attributes.merge(:pending => !!pending?, :checked_in_at => pending?.checked_in_at).to_json
+  def payload
+    {
+      :_id => id,
+      :name => name, 
+      :email => email, 
+      :gravatar_url => gravatar_url(:size => 80), 
+      :pending => !!pending?, 
+      :checked_in_at => pending?.try(:checked_in_at)
+    }
+  end
+  
+  def to_json(*args)
+    payload.to_json
   end
 end
 

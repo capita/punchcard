@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{punchcard}
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Olszowka"]
@@ -30,7 +30,6 @@ Gem::Specification.new do |s|
      "lib/public/css/blueprint.css",
      "lib/public/js/app.js",
      "lib/punchcard.rb",
-     "lib/punchcard/mongohq.rb",
      "lib/punchcard/person.rb",
      "lib/punchcard/punch.rb",
      "lib/views/index.haml",

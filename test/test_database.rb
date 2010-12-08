@@ -65,6 +65,26 @@ class TestDatabase < Test::Unit::TestCase
           should "be pending" do
             assert @person.pending?
           end
+          
+          should "have 1 punch by having reopened the old one" do
+            assert_equal 1, @person.punches.count
+            assert_equal 1, @person.punches.pending.length
+            assert_equal 0, @person.punches.finished.length
+          end
+        end
+        
+        context "and gets punched yet again 2 hours later" do
+          setup do
+            # Fake the timestamp so reopening does not get triggered
+            punch = @person.punches.first
+            punch.checked_out_at = 2.hours.ago
+            punch.save!
+            assert @person.punch!.instance_of?(Punch), "Should have been able to get punched and have returned a Punch"
+          end
+          
+          should "be pending" do
+            assert @person.pending?
+          end
 
           should "have 2 punches and one pending punch" do
             assert_equal 2, @person.punches.count

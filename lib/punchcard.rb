@@ -45,11 +45,17 @@ class Person
   end
   
   # Punches in when no punches pending, punches out when a pending punch exists!
+  # When punching in, checks whether a recently finished punch exists and reopens if so instead
+  # of creating a new punch
   def punch!
     if punch = punches.pending.first
       punch.punch_out!
     else
-      punches.create!
+      if recently_finished = punches.recently_finished.first
+        recently_finished.reopen!
+      else
+        punches.create!
+      end
     end
   end
   
@@ -78,6 +84,7 @@ class Punch
   
   scope :pending, where(:checked_out_at.exists => false)
   scope :finished, where(:checked_out_at.exists => true, :checked_in_at.exists => true)
+  scope :recently_finished, where(:checked_out_at.gt => 30.minutes.ago)
   
   validates_presence_of :checked_in_at
   
@@ -93,6 +100,12 @@ class Punch
   def punch_out!
     return false if checked_out_at.present?
     self.checked_out_at = Time.now
+    save!
+    self
+  end
+  
+  def reopen!
+    self.checked_out_at = nil
     save!
     self
   end

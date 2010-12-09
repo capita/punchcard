@@ -15,9 +15,7 @@
         <li id="${_id}">
           <img src="${gravatar_url}" title="${name}" class="gravatar {{if pending == true}}pending{{/if}} ${pending}"/>
           <div class="person">${name}</div>
-          {{if checked_in_at}}
-            <abbr class="timeago" title="${checked_in_at}"></abbr>
-          {{/if}}
+          <abbr class="timeago" title="{{if checked_in_at}}${checked_in_at}{{/if}}">&nbsp;</abbr>
         </li>
       </script>
       

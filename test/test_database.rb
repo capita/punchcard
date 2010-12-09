@@ -23,10 +23,12 @@ class TestDatabase < Test::Unit::TestCase
     
     context "that got punched 2 hours ago" do
       setup do
-        assert @person.punch!.instance_of?(Punch), "Should have been able to get punched and have returned a Punch"
-        punch = @person.pending?
-        punch.checked_in_at = 2.hours.ago
-        punch.save!
+        Timecop.freeze(2.hours.ago) do
+          assert @person.punch!.instance_of?(Punch), "Should have been able to get punched and have returned a Punch"
+          punch = @person.pending?
+          punch.checked_in_at = 2.hours.ago
+          punch.save!
+        end
       end
       
       should "have one pending punch" do
@@ -41,13 +43,15 @@ class TestDatabase < Test::Unit::TestCase
         end
       end
       
-      context "and gets punched again" do
+      context "and checked out 25 minutes ago" do
         setup do
-          assert @person.punch!.instance_of?(Punch), "Should have been able to get punched and have returned a Punch"
+          Timecop.freeze(25.minutes.ago) do
+            assert @person.punch!.instance_of?(Punch), "Should have been able to get punched and have returned a Punch"
+          end
         end
         
         should "have finished the pending punch" do
-          assert @person.punches.first.checked_out_at > 5.seconds.ago
+          assert @person.punches.first.checked_out_at < 24.minutes.ago and @person.punches.first.checked_out_at > 26.minutes.ago
         end
         
         should "not be pending" do
@@ -60,7 +64,7 @@ class TestDatabase < Test::Unit::TestCase
           assert_equal 1, @person.punches.finished.count
         end
         
-        context "and gets punched yet again" do
+        context "and punches in again now" do
           setup do
             assert @person.punch!.instance_of?(Punch), "Should have been able to get punched and have returned a Punch"
           end
@@ -76,15 +80,12 @@ class TestDatabase < Test::Unit::TestCase
           end
         end
         
-        context "and gets punched yet again 2 hours later" do
+        context "and gets punched yet again 1 hour later" do
           setup do
-            # Fake the timestamp so reopening does not get triggered
-            punch = @person.punches.finished.first
-            punch.checked_in_at = 3.hours.ago
-            punch.checked_out_at = 2.hours.ago
-            punch.save!
-            assert_nil @person.pending?
-            assert @person.punch!.instance_of?(Punch), "Should have been able to get punched and have returned a Punch"
+            Timecop.freeze(1.hour.from_now) do
+              assert_nil @person.pending?
+              assert @person.punch!.instance_of?(Punch), "Should have been able to get punched and have returned a Punch"
+            end
           end
           
           should "be pending" do

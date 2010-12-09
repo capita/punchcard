@@ -5,7 +5,6 @@ class Punch < ActiveRecord::Base
   
   scope :pending, where("checked_out_at IS NULL").order("checked_in_at ASC")
   scope :finished, where("checked_in_at IS NOT NULL AND checked_out_at IS NOT NULL").order('checked_out_at DESC')
-  scope :recently_finished, where("checked_out_at > ?", 30.minutes.ago).order('checked_out_at DESC')
   
   before_validation do |p|
     p.checked_in_at ||= Time.now

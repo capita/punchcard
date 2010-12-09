@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    punchcard (0.1.4)
+    punchcard (0.2.4)
       activerecord (~> 3.0.0)
       bson_ext
       gravtastic
@@ -42,6 +42,7 @@ GEM
     sqlite3 (0.1.1)
       ffi (>= 0.6.3)
     tilt (1.1)
+    timecop (0.3.5)
     tzinfo (0.3.23)
 
 PLATFORMS
@@ -58,3 +59,4 @@ DEPENDENCIES
   shoulda (= 2.10.3)
   sinatra (>= 1.0.0)
   sqlite3
+  timecop

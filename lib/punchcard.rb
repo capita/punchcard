@@ -9,7 +9,13 @@ require 'logger'
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 ActiveRecord::Base.logger.level = Logger::WARN
 ActiveRecord::Migration.verbose = false
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || {:adapter => 'sqlite3', :database => "punchcard_#{ENV['RACK_ENV'] || 'development'}.sqlite3"})
+
+if ENV['DATABASE_URL']
+  dbconfig = YAML.load(File.read('config/database.yml'))
+  ActiveRecord::Base.establish_connection dbconfig[ENV['RACK_ENV']]
+else
+  ActiveRecord::Base.establish_connection(:adapter => 'sqlite3', :database => "punchcard_#{ENV['RACK_ENV'] || 'development'}.sqlite3")
+end
 
 require 'punchcard/person'
 require 'punchcard/punch'

@@ -2,23 +2,36 @@
 
 A simple Sinatra app that lets you track who is and has been in the office at what times.
 
-== Setup (theory)
-
-Create a folder for your app, add a Gemfile:
+== Bootstrap
   
-  source :rubygems
-  gem 'punchcard'
-  # Fork of sinatra-mongoid that plays nice with mongohq on heroku
-  gem 'sinatra-mongoid', :require => 'sinatra/mongoid', :git => 'https://github.com/robertoles/sinatra-mongoid.git'
+Create a directory to hold your app, then create a Gemfile:
 
-Run bundle install. You'll also need a config.ru that looks like this:
+  source :rubygems
+  gem 'pg'
+  # gem 'sqlite3' # if you want to run using sqlite or test locally
+  gem 'punchcard', ">= 0.1.3", :path => '../github/punchcard'
+  
+Create a Rakefile:
+
+  require 'bundler'
+  require 'rake'
+  Bundler.require
+
+  require 'punchcard/tasks'
+  
+Create a config.ru for rack:
 
   require 'bundler'
   Bundler.require
+
+  Punchcard.use Rack::Auth::Basic do |username, password|
+    [username, password] == ['someuser', 'secret']
+  end
+
   run Punchcard
   
-Now running rackup should launch punchcard.
-  
+Running 
+
 == Setup (for real on Heroku)
 
 Same as above, but you can ditch the mongo_db setup line. Initialize a git repo in your folder

@@ -1,13 +1,4 @@
 class Person < ActiveRecord::Base
-  # include Mongoid::Document
-  # 
-  # field :name
-  # field :email
-  # 
-  # index :name, :unique => true
-  # 
-  # embeds_many :punches
-  
   has_many :punches
   
   validates_presence_of :name, :email

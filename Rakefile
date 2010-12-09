@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "punchcard"
-    gem.summary = %Q{Simple sinatra/mongodb app for tracking time when people have been in the office}
-    gem.description = %Q{Simple sinatra/mongodb app for tracking time when people have been in the office}
+    gem.summary = %Q{Simple sinatra/activerecord based app for tracking time when people have been in the office}
+    gem.description = %Q{Simple sinatra/activerecord based app for tracking time when people have been in the office}
     gem.email = "christoph at olszowka de"
     gem.homepage = "http://github.com/colszowka/punchcard"
     gem.authors = ["Christoph Olszowka"]

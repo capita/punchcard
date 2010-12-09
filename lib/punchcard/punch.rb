@@ -1,9 +1,4 @@
 class Punch < ActiveRecord::Base
-  # field :checked_in_at, :type => Time
-  # field :checked_out_at, :type => Time
-  # 
-  # embedded_in :person, :inverse_of => :punches
-  
   belongs_to :person
 
   validates_presence_of :checked_in_at

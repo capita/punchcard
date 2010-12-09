@@ -33,7 +33,7 @@ class Person < ActiveRecord::Base
       :email => email, 
       :gravatar_url => gravatar_url(:size => 80), 
       :pending => !!pending?, 
-      :checked_in_at => pending?.try(:checked_in_at)
+      :checked_in_at => pending? ? pending?.checked_in_at.getutc.iso8601 : nil
     }
   end
   

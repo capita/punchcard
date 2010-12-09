@@ -10,7 +10,8 @@ ActiveRecord::Base.logger = Logger.new(STDOUT)
 ActiveRecord::Base.logger.level = Logger::WARN
 ActiveRecord::Migration.verbose = false
 
-if ENV['DATABASE_URL']
+# Heroku-deployed apps will have this
+if File.exist?('config/database.yml')
   dbconfig = YAML.load(File.read('config/database.yml'))
   ActiveRecord::Base.establish_connection dbconfig[ENV['RACK_ENV']]
 else

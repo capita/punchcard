@@ -1,12 +1,14 @@
-class Person
-  include Mongoid::Document
-
-  field :name
-  field :email
+class Person < ActiveRecord::Base
+  # include Mongoid::Document
+  # 
+  # field :name
+  # field :email
+  # 
+  # index :name, :unique => true
+  # 
+  # embeds_many :punches
   
-  index :name, :unique => true
-  
-  embeds_many :punches
+  has_many :punches
   
   validates_presence_of :name, :email
   
@@ -15,14 +17,14 @@ class Person
   
   # Returns the currently pending punch when present, nil otherwise
   def pending?
-    punches.pending.first
+    punches.pending.count > 0 ? punches.pending.first : nil
   end
   
   # Punches in when no punches pending, punches out when a pending punch exists!
   # When punching in, checks whether a recently finished punch exists and reopens if so instead
   # of creating a new punch
   def punch!
-    if punch = punches.pending.first
+    if punch = pending?
       punch.punch_out!
     else
       if recently_finished = punches.recently_finished.first

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Olszowka"]
-  s.date = %q{2010-12-08}
+  s.date = %q{2010-12-09}
   s.description = %q{Simple sinatra/mongodb app for tracking time when people have been in the office}
   s.email = %q{christoph at olszowka de}
   s.extra_rdoc_files = [
@@ -60,29 +60,32 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<bson_ext>, [">= 0"])
       s.add_runtime_dependency(%q<haml>, [">= 3.0.24"])
       s.add_runtime_dependency(%q<sass>, [">= 3.0.0"])
-      s.add_runtime_dependency(%q<mongoid>, [">= 0"])
+      s.add_runtime_dependency(%q<activerecord>, ["~> 3.0.0"])
       s.add_runtime_dependency(%q<gravtastic>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, ["= 2.10.3"])
       s.add_development_dependency(%q<rack-test>, [">= 0.5.6"])
+      s.add_development_dependency(%q<sqlite3>, [">= 0"])
     else
       s.add_dependency(%q<sinatra>, [">= 1.0.0"])
       s.add_dependency(%q<bson_ext>, [">= 0"])
       s.add_dependency(%q<haml>, [">= 3.0.24"])
       s.add_dependency(%q<sass>, [">= 3.0.0"])
-      s.add_dependency(%q<mongoid>, [">= 0"])
+      s.add_dependency(%q<activerecord>, ["~> 3.0.0"])
       s.add_dependency(%q<gravtastic>, [">= 0"])
       s.add_dependency(%q<shoulda>, ["= 2.10.3"])
       s.add_dependency(%q<rack-test>, [">= 0.5.6"])
+      s.add_dependency(%q<sqlite3>, [">= 0"])
     end
   else
     s.add_dependency(%q<sinatra>, [">= 1.0.0"])
     s.add_dependency(%q<bson_ext>, [">= 0"])
     s.add_dependency(%q<haml>, [">= 3.0.24"])
     s.add_dependency(%q<sass>, [">= 3.0.0"])
-    s.add_dependency(%q<mongoid>, [">= 0"])
+    s.add_dependency(%q<activerecord>, ["~> 3.0.0"])
     s.add_dependency(%q<gravtastic>, [">= 0"])
     s.add_dependency(%q<shoulda>, ["= 2.10.3"])
     s.add_dependency(%q<rack-test>, [">= 0.5.6"])
+    s.add_dependency(%q<sqlite3>, [">= 0"])
   end
 end
 

@@ -14,10 +14,11 @@ begin
     gem.add_dependency 'bson_ext', '>= 0'
     gem.add_dependency 'haml', '>= 3.0.24'
     gem.add_dependency 'sass', '>= 3.0.0'
-    gem.add_dependency 'mongoid', '>= 0'
+    gem.add_dependency 'activerecord', '~> 3.0.0'
     gem.add_dependency 'gravtastic', '>= 0'
     gem.add_development_dependency "shoulda", "2.10.3"
     gem.add_development_dependency "rack-test", ">= 0.5.6"
+    gem.add_development_dependency 'sqlite3', '>= 0'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

@@ -1,7 +1,8 @@
-## MAC OS
 .DS_Store
+
 .bundle
 .sass-cache
+*.sqlite*
 
 ## TEXTMATE
 *.tmproj

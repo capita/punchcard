@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{punchcard}
-  s.version = "0.1.4"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Olszowka"]
   s.date = %q{2010-12-09}
-  s.description = %q{Simple sinatra/mongodb app for tracking time when people have been in the office}
+  s.description = %q{Simple sinatra/activerecord based app for tracking time when people have been in the office}
   s.email = %q{christoph at olszowka de}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -26,12 +26,15 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "config.ru",
+     "lib/db/migrate/01_create_people.rb",
+     "lib/db/migrate/02_create_punches.rb",
      "lib/public/cardbg.png",
      "lib/public/css/blueprint.css",
      "lib/public/js/app.js",
      "lib/punchcard.rb",
      "lib/punchcard/person.rb",
      "lib/punchcard/punch.rb",
+     "lib/punchcard/tasks.rb",
      "lib/views/index.haml",
      "lib/views/layout.haml",
      "lib/views/screen.sass",
@@ -44,7 +47,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Simple sinatra/mongodb app for tracking time when people have been in the office}
+  s.summary = %q{Simple sinatra/activerecord based app for tracking time when people have been in the office}
   s.test_files = [
     "test/helper.rb",
      "test/test_database.rb",

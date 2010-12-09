@@ -24,34 +24,34 @@ Create a config.ru for rack:
   require 'bundler'
   Bundler.require
 
+  # You'll surely want to secure your punch card from general web access. The simplest way to do so is by
+  # using the rack auth middleware, defining it somewhere in your config.ru:
   Punchcard.use Rack::Auth::Basic do |username, password|
     [username, password] == ['someuser', 'secret']
   end
 
   run Punchcard
   
-Running 
+To run locally, make sure you have a proper ENV['DATABASE_URL'] configured or the sqlite3 gem installed
+with your bundle. Then:
 
-== Setup (for real on Heroku)
+  $ bundle install
+  $ rake db:migrate
+  $ rackup
 
-Same as above, but you can ditch the mongo_db setup line. Initialize a git repo in your folder
+Open http://localhost:9292
+
+== Hosting on Heroku
+
+Starting from the initial bootstrap above, make sure you have the pg gem in your bundle, then do the
+following in the terminal:
 
   $ git init
-  $ git commit -a -m "Initial commit"
+  $ git commit -am "Initial commit"
   $ heroku create [APPNAME] --stack bamboo-mri-1.9.2
-  $ heroku addons:add mongohq:free
   $ git push heroku master
   
-Now head over to your app's url! Please also check out the next two sections for auth and adding people.
-  
-== Authentication
-
-You'll surely want to secure your punch card from general web access. The simplest way to do so is by
-using the rack auth middleware by defining it somewhere in your config.ru:
-
-  Punchcard.use Rack::Auth::Basic do |username, password|
-    [username, password] == ['admin', 'admin']
-  end
+Now head over to your app's url! You'll still need to add users, see below.
   
 == Adding people
 

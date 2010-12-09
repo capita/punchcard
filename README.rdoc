@@ -46,8 +46,8 @@ Open http://localhost:9292
 Starting from the initial bootstrap above, make sure you have the pg gem in your bundle, then do the
 following in the terminal:
 
-  $ git init
-  $ git commit -am "Initial commit"
+  $ git init && git add .
+  $ git commit -m "Initial commit"
   $ heroku create [APPNAME] --stack bamboo-mri-1.9.2
   $ git push heroku master
   

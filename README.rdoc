@@ -43,13 +43,14 @@ Open http://localhost:9292
 
 == Hosting on Heroku
 
-Starting from the initial bootstrap above, make sure you have the pg gem in your bundle, then do the
-following in the terminal:
+Starting from the initial bootstrap above, make sure you have the pg gem in your bundle and did run
+bundle install to create the Gemfile.lock, then do the following in the terminal:
 
   $ git init && git add .
   $ git commit -m "Initial commit"
   $ heroku create [APPNAME] --stack bamboo-mri-1.9.2
   $ git push heroku master
+  $ heroku rake db:migrate
   
 Now head over to your app's url! You'll still need to add users, see below.
   

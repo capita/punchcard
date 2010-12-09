@@ -9,7 +9,7 @@ require 'logger'
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 ActiveRecord::Base.logger.level = Logger::WARN
 ActiveRecord::Migration.verbose = false
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || {:adapter => 'sqlite3', :database => "punchcard_#{ENV['RACK_ENV'] || 'dev'}.sqlite3"})
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || {:adapter => 'sqlite3', :database => "punchcard_#{ENV['RACK_ENV'] || 'development'}.sqlite3"})
 
 require 'punchcard/person'
 require 'punchcard/punch'
@@ -23,7 +23,7 @@ class Punchcard < Sinatra::Base
   end
   
   get '/status.json' do
-    Person.order_by(:name).all.to_json
+    Person.order('name ASC').map(&:payload).to_json
   end
   
   post '/punch/:id' do

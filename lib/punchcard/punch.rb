@@ -12,7 +12,7 @@ class Punch < ActiveRecord::Base
   end
   
   validate do |p|
-    p.errors.add :person, "Person already has a pending punch!" if p.person.pending? and p.person.pending? != p
+    p.errors.add :person, "Person already has a pending punch!" if p.person.pending? and p.person.pending?.id != p.id
   end
   
   after_save do |p|

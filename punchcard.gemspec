@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Christoph Olszowka"]
-  s.date = %q{2010-12-09}
+  s.date = %q{2010-12-10}
   s.description = %q{Simple sinatra/activerecord based app for tracking time when people have been in the office}
   s.email = %q{christoph at olszowka de}
   s.extra_rdoc_files = [
@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "config.ru",
      "lib/db/migrate/01_create_people.rb",
      "lib/db/migrate/02_create_punches.rb",
      "lib/public/cardbg.png",
@@ -70,6 +69,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rack-test>, [">= 0.5.6"])
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
       s.add_development_dependency(%q<timecop>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
     else
       s.add_dependency(%q<sinatra>, [">= 1.0.0"])
       s.add_dependency(%q<bson_ext>, [">= 0"])
@@ -81,6 +81,7 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rack-test>, [">= 0.5.6"])
       s.add_dependency(%q<sqlite3>, [">= 0"])
       s.add_dependency(%q<timecop>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
     end
   else
     s.add_dependency(%q<sinatra>, [">= 1.0.0"])
@@ -93,6 +94,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rack-test>, [">= 0.5.6"])
     s.add_dependency(%q<sqlite3>, [">= 0"])
     s.add_dependency(%q<timecop>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
   end
 end
 

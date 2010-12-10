@@ -25,9 +25,6 @@ class TestDatabase < Test::Unit::TestCase
       setup do
         Timecop.freeze(2.hours.ago) do
           assert @person.punch!.instance_of?(Punch), "Should have been able to get punched and have returned a Punch"
-          punch = @person.pending?
-          punch.checked_in_at = 2.hours.ago
-          punch.save!
         end
       end
       
@@ -43,6 +40,10 @@ class TestDatabase < Test::Unit::TestCase
         end
       end
       
+      should "return an appropriate (virtual) amount of minutes while pending" do
+        assert_equal 120, @person.punches.first.minutes
+      end
+      
       context "and checked out 25 minutes ago" do
         setup do
           Timecop.freeze(25.minutes.ago) do
@@ -52,6 +53,10 @@ class TestDatabase < Test::Unit::TestCase
         
         should "have finished the pending punch" do
           assert @person.punches.first.checked_out_at < 24.minutes.ago and @person.punches.first.checked_out_at > 26.minutes.ago
+        end
+        
+        should "have set the proper amount of minutes" do
+          assert_equal 95, @person.punches.first.minutes
         end
         
         should "not be pending" do

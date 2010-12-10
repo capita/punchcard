@@ -8,6 +8,7 @@ class Punch < ActiveRecord::Base
   
   before_validation do |p|
     p.checked_in_at ||= Time.now.utc
+    p.minutes = p.difference_in_minutes
   end
   
   validate do |p|
@@ -19,6 +20,17 @@ class Punch < ActiveRecord::Base
     if p.checked_out_at.present? and (p.checked_out_at - p.checked_in_at) < 5.minutes
       p.destroy
     end
+  end
+  
+  # Return database-saved minutes when already checked out, otherwise calculate based upon time now
+  def minutes
+    checked_out_at.present? ? self["minutes"] : difference_in_minutes
+  end
+  
+  # Calculates the difference between checkin and checkout or time now when pending in minutes
+  def difference_in_minutes
+    base = checked_out_at.present? ? checked_out_at.utc : Time.now.utc
+    ((base - checked_in_at.utc) / 60).round
   end
   
   # Punches this punch out when pending

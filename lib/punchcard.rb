@@ -30,7 +30,7 @@ class Punchcard < Sinatra::Base
   end
   
   get '/status.json' do
-    Person.order('name ASC').map(&:payload).to_json
+    {:people => Person.order('name ASC').map(&:payload)}.to_json
   end
   
   post '/punch/:id' do

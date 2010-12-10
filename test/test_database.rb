@@ -123,10 +123,9 @@ class TestDatabase < Test::Unit::TestCase
     
     context "that punched in yesterday" do
       setup do
-        @person.punch!
-        punch = @person.pending?
-        punch.checked_in_at = 1.day.ago
-        punch.save!
+        Timecop.freeze(1.day.ago) do
+          @person.punch!
+        end
       end
       
       context "and punches out today" do
@@ -136,7 +135,7 @@ class TestDatabase < Test::Unit::TestCase
         
         should "result in the punch out getting moved to the end of yesterday" do
           checkout_time = @person.punches.finished.first.checked_out_at
-          assert_equal 1.day.ago.end_of_day.to_date, checkout_time.to_date
+          assert_equal 1.day.ago.end_of_day.utc.to_date, checkout_time.utc.to_date
           assert_equal 23, checkout_time.hour
           assert_equal 59, checkout_time.min
         end

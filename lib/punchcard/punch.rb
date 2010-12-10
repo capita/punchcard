@@ -7,7 +7,7 @@ class Punch < ActiveRecord::Base
   scope :finished, where("checked_in_at IS NOT NULL AND checked_out_at IS NOT NULL").order('checked_out_at DESC')
   
   before_validation do |p|
-    p.checked_in_at ||= Time.now
+    p.checked_in_at ||= Time.now.utc
   end
   
   validate do |p|
@@ -25,10 +25,10 @@ class Punch < ActiveRecord::Base
   def punch_out!
     return false if checked_out_at.present?
     # Make sure no one stays the night...
-    if self.checked_in_at.to_date < Date.today
-      self.checked_out_at = self.checked_in_at.end_of_day
+    if self.checked_in_at.utc < Time.now.utc.beginning_of_day
+      self.checked_out_at = self.checked_in_at.utc.end_of_day
     else
-      self.checked_out_at = Time.now
+      self.checked_out_at = Time.now.utc
     end
     save!
     self

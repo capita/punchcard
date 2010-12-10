@@ -18,7 +18,7 @@ class Person < ActiveRecord::Base
     if punch = pending?
       punch.punch_out!
     else
-      if recently_finished = punches.finished.first and recently_finished.checked_out_at > 30.minutes.ago
+      if recently_finished = punches.finished.first and recently_finished.checked_out_at.utc > 30.minutes.ago.utc
         recently_finished.reopen!
       else
         punches.create!

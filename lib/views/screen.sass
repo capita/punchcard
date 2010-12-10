@@ -6,7 +6,7 @@ $green: #090
 $yellow: #fc0
 
 #main
-  width: 800px
+  max-width: 700px
   margin-top: 30px
   padding: 20px 20px 10px 20px
   margin-left: auto
@@ -14,7 +14,9 @@ $yellow: #fc0
   background: #eadab6
   border-top: 10px solid #f8bba6 
   -moz-box-shadow: 3px 3px 0px #d2bd8e
+  -webkit-box-shadow: 3px 3px 0px #d2bd8e
   -moz-border-radius: 20px
+  -webkit-border-radius: 20px
 
 .clear
   clear: both
@@ -45,6 +47,9 @@ $yellow: #fc0
       position: relative
       top: -10px
     
+    .person
+      text-shadow: -1px -2px 3px #d2bd8e, 1px 1px 3px #fff
+    
     .gravatar
       float: left
       width: 80px
@@ -52,7 +57,9 @@ $yellow: #fc0
       margin-right: 25px
       border: 3px solid $yellow
       -moz-box-shadow: 0px 0px 10px $yellow
+      -webkit-box-shadow: 0px 0px 10px $yellow
       &.pending
         border-color: $green
         -moz-box-shadow: 0px 0px 15px $green
+        -webkit-box-shadow: 0px 0px 15px $green
       

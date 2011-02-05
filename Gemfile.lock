@@ -3,7 +3,6 @@ PATH
   specs:
     punchcard (0.3.0)
       activerecord (~> 3.0.0)
-      bson_ext
       gravtastic
       haml (>= 3.0.24)
       sass (>= 3.0.0)
@@ -23,20 +22,13 @@ GEM
       tzinfo (~> 0.3.23)
     activesupport (3.0.3)
     arel (2.0.7)
-    bson_ext (1.2.0)
     builder (2.1.2)
-    git (1.2.5)
     gravtastic (3.1.0)
     haml (3.0.25)
     i18n (0.5.0)
-    jeweler (1.5.2)
-      bundler (~> 1.0.0)
-      git (>= 1.2.5)
-      rake
     rack (1.2.1)
     rack-test (0.5.7)
       rack (>= 1.0)
-    rake (0.8.7)
     sass (3.1.0.alpha.221)
     shoulda (2.10.3)
     sinatra (1.1.2)
@@ -52,10 +44,8 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 3.0.0)
-  bson_ext
   gravtastic
   haml (>= 3.0.24)
-  jeweler
   punchcard!
   rack-test (>= 0.5.6)
   sass (>= 3.0.0)

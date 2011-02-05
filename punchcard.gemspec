@@ -15,7 +15,6 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "punchcard"
   
   s.add_dependency 'sinatra', ">= 1.0.0"
-  s.add_dependency 'bson_ext', '>= 0'
   s.add_dependency 'haml', '>= 3.0.24'
   s.add_dependency 'sass', '>= 3.0.0'
   s.add_dependency 'activerecord', '~> 3.0.0'
@@ -24,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rack-test", ">= 0.5.6"
   s.add_development_dependency 'sqlite3', '>= 0'
   s.add_development_dependency 'timecop', '>= 0'
-  s.add_development_dependency 'jeweler', '>= 0'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

@@ -41,6 +41,10 @@ with your bundle. Then:
 
 Open http://localhost:9292
 
+== Supported Ruby versions
+
+Punchcard is tested against MRI 1.8.7, 1.9.1, 1.9.2 and Ruby Enterprise Edition.
+
 == Hosting on Heroku
 
 Starting from the initial bootstrap above, make sure you have the pg gem in your bundle and did run

@@ -1,6 +1,6 @@
 class Punchcard::App < Sinatra::Base
-  set :views,  File.join(File.dirname(__FILE__), 'views')
-  set :public, File.join(File.dirname(__FILE__), 'public')
+  set :views,  File.join(File.dirname(__FILE__), '../views')
+  set :public, File.join(File.dirname(__FILE__), '../public')
   
   get '/' do
     haml :index

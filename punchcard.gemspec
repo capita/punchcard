@@ -14,11 +14,12 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "punchcard"
   
-  s.add_dependency 'sinatra', ">= 1.0.0"
-  s.add_dependency 'haml', '>= 3.0.24'
+  s.add_dependency 'sinatra', "~> 1.1.0"
+  s.add_dependency 'haml', '~> 3.0.24'
   s.add_dependency 'sass', '>= 3.0.0'
   s.add_dependency 'activerecord', '~> 3.0.0'
-  s.add_dependency 'gravtastic', '>= 0'
+  s.add_dependency 'gravtastic', '~> 3.1.0'
+  s.add_dependency 'json', '~> 1.5.0'
   s.add_development_dependency "shoulda", "2.10.3"
   s.add_development_dependency "rack-test", ">= 0.5.6"
   s.add_development_dependency 'sqlite3', '>= 0'

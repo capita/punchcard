@@ -7,6 +7,7 @@ require 'test/unit'
 require 'shoulda'
 require 'rack/test'
 require 'timecop'
+require 'json'
 
 # DB setup
 require 'logger'

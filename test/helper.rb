@@ -1,15 +1,12 @@
 ENV['RACK_ENV'] = 'test'
 require 'rubygems'
-require 'bundler'
-Bundler.require
+require 'bundler/setup'
+require 'punchcard'
+
 require 'test/unit'
 require 'shoulda'
 require 'rack/test'
 require 'timecop'
-
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'punchcard'
 
 # DB setup
 require 'logger'

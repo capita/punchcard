@@ -26,11 +26,11 @@ Create a config.ru for rack:
 
   # You'll surely want to secure your punch card from general web access. The simplest way to do so is by
   # using the rack auth middleware, defining it somewhere in your config.ru:
-  Punchcard.use Rack::Auth::Basic do |username, password|
+  Punchcard::App.use Rack::Auth::Basic do |username, password|
     [username, password] == ['someuser', 'secret']
   end
 
-  run Punchcard
+  run Punchcard::App
   
 To run locally, make sure you have a proper ENV['DATABASE_URL'] configured or the sqlite3 gem installed
 with your bundle. Then:
